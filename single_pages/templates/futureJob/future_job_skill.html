@@ -1,0 +1,127 @@
+
+{% extends 'futureJob/future_job_based.html' %}
+
+
+{% block futureJob_DetailStyle %}  {% comment %} 해당 페이지에서 사용할 CSS 추가 {% endcomment %}
+section{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  width: 1250px;
+  {% comment %} height: 30vh; {% endcomment %}
+  margin: 4vh auto;
+  border-spacing: 1vw;
+}
+article{
+  width:30%; 
+  text-align: center;
+  border: 1px;
+  border-radius: 5px;
+  padding: 2%;
+  font-size: 18px;
+  font-weight: bold;
+}
+section div{
+  margin:10px auto 0;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: 90px 90px;
+  background-position:5px center;
+  text-align:right;
+  line-height: 33px;
+  padding:0 10px;
+  transition: 0.2s;
+}
+.problem_solving{
+  background-image: url('/static/images/skill_problem.png');
+  background-color: #FAE3D8;
+}
+.organization{
+  background-image: url('/static/images/skill_organization.png');
+  background-color: #D5F7CF;
+}
+{% comment %} .people{
+  background-image: url('/static/images/skill_people.png');
+} {% endcomment %}
+.tech{
+  background-image: url('/static/images/skill_tech.png');
+  background-color: #CFF7F3;
+}
+.selfdev{
+  background-image: url('/static/images/skill_selfdev.png');
+  background-color: #F4F7CF;
+}
+.flag {
+  -webkit-transform: scale(1);
+transform: scale(1);
+-webkit-transition: .2s ease-in-out;
+transition: .2s ease-in-out;
+}
+.flag:hover {
+  -webkit-transform: scale(1.3);
+transform: scale(1.3);
+}
+small {
+  font-size: 14px;
+  font-weight: normal;
+}
+p{
+  font-size: 14px;
+  font-weight: normal;
+  display: none;
+}
+article div:hover p{
+  display: block;
+}
+article div:hover {
+  border:2px solid #008CBA;
+  background-color: white;
+}
+{% endblock %}
+
+{% block futureJob_main %} {% comment %} 해당 페이지에서 보여주고 싶은 main 내용 추가 {% endcomment %}
+<section>
+  <article>
+    <img class="flag korea_flag" src="/static/images/southkorea_flag.png" alt="Korea-flag" width="90" height="90">
+      <div class="problem_solving">미래예측력<p>분석을 통해 미래 사회의<br>변화 흐름을 예측</p></div>
+      <div class="tech">다학제간 지식융합력<p>다른 분야의 지식을<br>업무에 맞게 접목</p></div>
+      <div class="tech">데이터분석 / 활용능력<p>여러 정보에 대한<br>이해, 분석, 모델링</p></div>
+      <div class="problem_solving">전체 조망력<p>산업 안,밖의 다양한 요소들을<br>연결하며 전체 산업의 흐름을 이해</p></div>
+      <div class="problem_solving">통찰적 실행력<p>필요한 정보나 기술들을<br>파악하고 적용</p></div>
+      <div class="selfdev">자기주도 학습력<p>업무에 필요한 지식을<br>스스로 찾고 학습</p></div>
+      <div class="selfdev">변화수용력<p>미래의 변화를 이해하고<br>자신의 삶에 받아들임</p></div>
+      <div class="organization">다양성 포용력<p>가치와 생각, 문화의<br>다양성을 인정하고 이해</p></div>
+      <div class="problem_solving">위기대처능력<p>대처하기 힘들고 어려운<br>문제 상황에서도 끝까지 해냄</p></div>
+      <div class="organization">포용적 협업능력<p>업무 분야간 협력과<br>사회적 연대를 추구</p></div>
+      <small>자료: 한국고용정보원 (2020)</small>
+  </article>
+  <article>
+    <img class="flag swiss_flag" src="/static/images/switzerland_flag.png" alt="Swiss-flag" width="90" height="90">
+      <div class="problem_solving">창의적 사고<p>상황에 맞는 새롭고<br>가치 있는 결과물을 만들어 냄</p></div>
+      <div class="problem_solving">분석적 사고능력<p>복잡한 상황을 세분화하고<br>숨어있는 의미 파악</p></div>
+      <div class="tech">기술적 소양<p>업무에 필요한 기술에<br>대한 이해 및 활용</p></div>
+      <div class="selfdev">호기심과 평생학습<p>다양한 세부 요소들을<br>연결할지 끊임없이 탐구</p></div>
+      <div class="selfdev">회복탄력성<p>스트레스나 역경에 대처하고<br>견뎌 낼 수 있는 능력</p></div>
+      <div class="selfdev">변화수용력<p>미래의 변화를 이해하고<br>자신의 삶에 받아들임</p></div>
+      <div class="tech">시스템 사고<p>문제의 전체적인 모습을<br>체계적으로 파악</p></div>
+      <div class="tech">데이터분석 / 활용능력<p>여러 정보에 대한<br>이해, 분석, 모델링</p></div>
+      <div class="selfdev">동기부여 능력<p>자신감, 긍정적 사고</p></div>
+      <div class="organization">서비스 중심적 사고<p>고객의 필요를<br>파악 및 분석</p></div>
+      <small>자료: World Economic Forum (2023)</small>
+  </article>
+  <article>
+    <img class="flag aussi_flag" src="/static/images/australia_flag.png" alt="Australia-flag" width="90" height="90">
+      <div class="tech">다학제간 지식융합력<p>다른 분야의 지식을<br>업무에 맞게 접목</p></div>
+      <div class="tech">데이터분석 / 활용능력<p>여러 정보에 대한<br>이해, 분석, 모델링</p></div>
+      <div class="problem_solving">창의적 사고<p>상황에 맞는 새롭고<br>가치 있는 결과물을 만들어 냄</p></div>
+      <div class="organization">커뮤니케이션<p>상황에 따라 적절히<br>융통성, 유연성 있게 적용</p></div>
+      <div class="organization">팀워크<p>각각의 팀원이 역할에 따라<br>책임을 수행 및 협업</p></div>
+      <div class="organization">사회적 민감성<p>사회에서 나타나는<br>문제에 관심을 갖는 능력</p></div>
+      <div class="selfdev">변화수용력<p>미래의 변화를 이해하고<br>자신의 삶에 받아들임</p></div>
+      <div class="selfdev">자기주도 학습력<p>업무에 필요한 지식을<br>스스로 찾고 학습</p></div>
+      <small>자료: Foundation for Young Australians (2017)</small>
+  </article>
+</section>
+
+
+{% endblock %}

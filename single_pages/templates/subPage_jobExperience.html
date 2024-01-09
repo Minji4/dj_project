@@ -1,0 +1,49 @@
+{% extends 'common/htmlTmp_based.html' %}
+
+{% block pageTitle %} 어른들이 하는 일! 나도 해볼래요~ {% endblock %}
+
+{% block pageStyle %} 
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .image-container a {
+            margin: 0 10px; 
+            text-align: center;
+            float: left;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block header_scripts %}
+    <script>
+        $(document).ready(function() {
+           
+        });
+    </script>
+{% endblock %}
+
+{% block pageContent %}
+    <h1>어른들이 하는 일! 나도 해볼래요~</h1>
+
+    <div class="image-container">       
+        <a href="jobex" target="_blank"> 
+            <img src="/static/images/직업체험.png" alt="ex"> 
+        </a>
+        <a href="joby" target="_blank"> 
+            <img src="/static/images/영상.png" alt="yt."> 
+        </a>
+    </div>
+
+{% endblock %}

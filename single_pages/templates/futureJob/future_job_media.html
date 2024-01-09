@@ -1,0 +1,152 @@
+{% extends 'futureJob/future_job_based.html' %}
+
+
+{% block futureJob_DetailStyle %} {% comment %} 해당 페이지에서 사용할 CSS 추가 {% endcomment %}
+.futureTitle{
+  width: 1250px;
+  margin: 4vh auto 1vh;
+  font-size: 24px;
+  font-weight: bold;
+}
+.dropbtn {
+  background-color: red;
+  color: white;
+  padding: 5px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius:10px;
+  margin-left:1em;
+}
+section{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  width: 1250px;
+  {% comment %} height: 30vh; {% endcomment %}
+  margin: 4vh auto;
+  background-color: #fff2bc;
+}
+article{
+  width:33%; 
+  text-align: center;
+  {% comment %} border-radius: 5px; {% endcomment %}
+  padding: 2%;
+  font-size: 16px;
+  font-weight: bold;
+}
+section div{
+  margin:10px auto 40px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: 90px 90px;
+  background-position:5px center;
+  text-align:left;
+  line-height: 20px;
+  padding:0 10px;
+  transition: 0.2s;
+}
+img {
+  -webkit-transform: scale(1);
+transform: scale(1);
+-webkit-transition: .2s ease-in-out;
+transition: .2s ease-in-out;
+}
+img:hover {
+  -webkit-transform: scale(1.1);
+transform: scale(1.05);
+opacity: 0.5;
+}
+{% endblock %}
+
+{% block futureJob_DetailScripts %}
+<script>
+     function myFunction(element, myId) {
+        //var myIds = document.getElementById(myId)
+
+        //futureBox.style.display = "block";
+        if (element.style.display != "none") {
+            element.style.display = "none";
+            // this.text() = "펼치기";
+            myId.innerText = '펼치기'            
+            
+        }
+        else {
+            element.style.display = "flex";
+            myId.innerText = '접기'         
+        }
+        
+    }
+</script>
+{% endblock %}  
+
+{% block futureJob_main %} {% comment %} 해당 페이지에서 보여주고 싶은 main 내용 추가 {% endcomment %}
+<div class="futureTitle">미래 유망 직업 - 유튜브<button class="dropbtn" id="button_1" onclick="myFunction(youtubeList1, button_1)">접기</button></div>
+<section id="youtubeList1">
+  <article>
+    <a href="https://www.youtube.com/watch?v=2-YeHsLqeQk" target="_blank">
+    <img src="https://img.youtube.com/vi/2-YeHsLqeQk/0.jpg" alt="" width="350">
+      <div>경기도교육청 –<br>미래 유망 직업 TOP4</div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=Yb-XotDs5mY" target="_blank">
+      <img src="https://img.youtube.com/vi/Yb-XotDs5mY/0.jpg" alt="" width="350">
+        <div>조승연의 탐구생활 –<br>미래에 인기있을 직업과 산업군 전망</div>
+      </a>
+  </article>
+  <article>
+    <a href="https://www.youtube.com/watch?v=U6QkIYarM1M" target="_blank">
+      <img src="https://img.youtube.com/vi/U6QkIYarM1M/0.jpg" alt="" width="350">
+        <div>교육부 –<br>미래 유망직업 총결산</div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=tvsUm3sCmaQ" target="_blank">
+      <img src="https://img.youtube.com/vi/tvsUm3sCmaQ/0.jpg" alt="" width="350">
+        <div>커리어 가이드 채널 –<br>미래직업, AI 시대에도 인기있을 직업 TOP 15</div>
+    </a>
+  </article>
+  <article>
+    <a href="https://www.youtube.com/watch?v=A5zXPVAxYhA" target="_blank">
+      <img src="https://img.youtube.com/vi/A5zXPVAxYhA/0.jpg" alt="" width="350">
+        <div>여기는스쿨존 –<br>신기한 미래 직업 9가지</div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=cirgHJ8Yj7E" target="_blank">
+      <img src="https://img.youtube.com/vi/cirgHJ8Yj7E/0.jpg" alt="" width="350">
+        <div>EBS –<br>미래의 일자리변화, 어떻게 대비할까</div>
+    </a>
+  </article>
+</section>
+
+<div class="futureTitle">미래 직업 연구 포럼 - WEF<button class="dropbtn" id="button_2" onclick="myFunction(youtubeList2, button_2)">접기</button></div>
+<section id="youtubeList2">
+  <article>
+    <a href="https://www.youtube.com/watch?v=EuDnSqAo784" target="_blank">
+      <img src="https://img.youtube.com/vi/EuDnSqAo784/0.jpg" alt="" width="350">
+        <div>World Economic Forum –<br>미래의 직업은 무엇인가?</div>
+    </a>
+  </article>
+  <article>
+    <a href="https://www.youtube.com/watch?v=e-dfgSJP0Vk" target="_blank">
+      <img src="https://img.youtube.com/vi/e-dfgSJP0Vk/0.jpg" alt="" width="350">
+        <div>World Economic Forum –<br>2023 미래 직업 연구 리포트 브리핑</div>
+    </a>
+  </article>
+  <article>
+    <div></div>
+  </article>
+</section>
+
+<div class="futureTitle">미래 직업 가이드 - 주니어 커리어넷<button class="dropbtn" id="button_3" onclick="myFunction(youtubeList3, button_3)">접기</button></div>
+<section id="youtubeList3">
+  <article>
+    <a href="https://www.career.go.kr/jr/video/cat/list?cat_id=MCAT0236 " target="_blank">
+      <img src="https://www.career.go.kr/cnet/front/web/event/imageView.do?FILE_NM=futurejob_guide.jpg&FILE_PATH=img/2021/01/22/09/" alt="" width="350">
+        <div>주니어커리어넷 –<br>2023 미래 직업 가이드</div>
+    </a>
+  </article>
+  <article>
+    <div></div>
+  </article>
+  <article>
+    <div></div>
+  </article>
+</section>
+{% endblock %}

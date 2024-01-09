@@ -1,0 +1,62 @@
+{% extends 'common/htmlTmp_based.html' %}
+{% load static %}
+
+{% block pageTitle %} 미래 직업에 대한 여러 나라의 연구 결과를 살펴보아요
+{% endblock %}
+
+{% block pageStyle %} 
+  .futureJobBox {width:90%; margin:auto;}
+  header{text-align:center;}
+
+  header a {
+    background-color:white; padding:16px 32px; margin:4px 2px;
+    font-size:16px; color:black; text-align:center; text-decoration:none;
+    display:inline-block; border:none; border-radius:12px; cursor:pointer;
+    transition-duration:0.4s;
+  }
+
+  .button1 {border:2px solid #04AA6D; font-size: 20px; width: 350px;}
+  .button1:hover, .button1.on {background-color:#04AA6D; color:white;}
+  .button2 {border:2px solid #008CBA; font-size: 20px; width: 350px;}
+  .button2:hover, .button2.on {background-color:#008CBA; color:white;}
+  .button3 {border:2px solid #f44336; font-size: 20px; width: 350px;}
+  .button3:hover, .button3.on {background-color:#f44336; color:white;
+  }
+  {% block futureJob_DetailStyle %} {% endblock %}
+{% endblock %}
+
+{% block header_scripts %}
+<script>
+  $(document).ready(function() {
+    var tmpList = $(location).attr('href').split('/');
+    var pageName = tmpList[tmpList.length - 1];
+
+    $('header a').each(function() {
+      if ($(this).attr("href") == pageName) {
+        $(this).addClass('on');
+      } else {
+        $(this).removeClass('on');
+      }
+    });
+  });
+</script>
+  {% block futureJob_DetailScripts %} {% endblock %}     
+{% endblock %}
+
+
+{% block pageContent %}
+<div class="futureJobBox">
+  <header>
+      <h1>미래 직업에 대한 여러 나라의 연구 결과를 살펴보아요</h1>
+      <a href="futureJob" class="button1">글로벌 일자리 변화 트렌드</a>
+      <a href="futureJobSkill" class="button2">미래 직업을 위한 능력들</a>
+      <a href="futureJobMedia" class="button3">미래 직업 동영상</a>
+  </header>
+  <main>
+  {% block futureJob_main %}
+        
+  {% endblock %}
+  </main>
+</div>
+
+{% endblock %}

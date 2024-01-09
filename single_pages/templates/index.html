@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[직업의 세계] 직업의 세계에 오신 여러분을 환영합니다~</title>
+    <link rel="stylesheet" href="{% static 'css/default.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" media="screen" />
+</head>
+<body>
+<a href="/" class="logo">Home</a>
+<div class="pageLayer">
+    <h1><span>직</span><span>업</span><span>의</span><span>세</span><span>계</span></h1>
+
+    <ul>
+        <li><a href="/jobList">어른들이<br/>하는 일</a></li>
+        <li><a href="/jobInterest">나는<br/>누구일까?</a></li>
+        <li><a href="/jobExperience">나도<br/>해보기</a></li>
+        <li><a href="/futureJob">미래직업<br/>연구</a></li>
+        <li><a href="/board/">궁금증<br/>해결하기</a></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'common/htmlTmp_based.html' %}{% load static %}
+
+{% block pageTitle %} 게시글 확인!! {% endblock %}
+
+{% block pageStyle %} 
+.contBox {
+    width:70%; min-height:300px; padding:1em; margin:auto;
+    background:#fff2bc; border:2px solid #7c4c0e; border-radius:2em;
+}
+.contBox span {float:right; text-align:right;}
+.contBox p {padding:0 0 1em; margin:0 auto 1em; border-bottom:1px dotted #7c4c0e;}
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    $(document).ready(function() {
+
+    });
+</script>        
+{% endblock %}
+
+
+{% block pageContent %}
+    <h1>{{ post.title }}</h1>
+
+    <div class="contBox">
+        <span>{{ post.created_at }}</span>
+        <p>{{ post.content }}</p>
+        <div>여기 댓글이 들어올 수 있겠죠?</div>
+    </div>
+{% endblock %}

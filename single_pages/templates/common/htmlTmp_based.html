@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[직업의 세계] {% block pageTitle %} {% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static 'css/default.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/single_pages.css' %}" media="screen" />
+    <style>{% block pageStyle %} {% endblock %}</style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    {% block header_scripts %} {% endblock %}
+    <script src="{% static 'scripts/subPage.js' %}"></script>
+</head>
+<body>
+<div class="pageLayer">
+    <ul class="nav">
+        <li><a href="/" class="logo">Home</a></li>
+        <li class="menu"><a href="/jobList">어른들이 하는 일</a></li>
+        <li class="menu"><a href="/jobInterest">나는 누구?</a></li>
+        <li class="menu"><a href="/jobExperience">나도 해보기</a></li>
+        <li class="menu"><a href="/futureJob">미래직업 연구</a></li>
+        <li class="menu"><a href="/board/">궁금증 해결하기</a></li>
+    </ul>
+    
+    {% block pageContent %} {% endblock %}
+</div>
+</body>
+</html>

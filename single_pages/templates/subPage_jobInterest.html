@@ -1,0 +1,200 @@
+{% extends 'common/htmlTmp_based.html' %}
+{% load static %}
+
+{% block pageTitle %} 나는 어떤 사람일까요? {% endblock %}
+
+{% block pageStyle %} 
+{% endblock %}
+
+{% block header_scripts %}
+<script>
+    $(document).ready(function() {
+
+        var boxClassName = '.jobInterest';
+        var boxClassNameRes = '.jobInterest_result';
+        var scoreR = 0;
+        var scoreI = 0;
+        var scoreA = 0;
+        var scoreS = 0;
+        var scoreE = 0;
+        var scoreC = 0;
+        
+        var uType = '';
+        var scoreList = [];
+    
+        $('.jobTypeDesc li .typeR').show();
+        $(boxClassNameRes).hide();
+
+        // 유형 선택값 확인
+        $('.jobTypeDesc li').on("click", function() {
+            if ($(this).attr("id") != "typeDesc") {
+                $(this).addClass('active');
+                uType = $(this).attr("id");            
+                $('.jobTypeDesc li').not(this).removeClass("active");
+                $('.jobTypeDesc li').children("."+uType).show();
+                $('.jobTypeDesc li').children("p").not("."+uType).hide();
+            }
+        });
+
+
+        var jobList = $(boxClassName);
+    
+        function updateHTML(html) {
+            jobList.html(html);
+        }
+    
+        function showQuestion(idx, data) {
+            var qIndex = idx;
+            var qData = data[idx];
+            var qDataNo = qData.qitemNo;
+    
+            var html = [
+                '<p>', qData.question, '</p>',
+                '<input type="radio" name="jobIts', qDataNo, '" id="jobItsY', qDataNo, '" value="yes"><label for="jobItsY', qDataNo, '">예</label>',
+                '<input type="radio" name="jobIts', qDataNo, '" id="jobItsM', qDataNo, '" value="soso"><label for="jobItsM', qDataNo, '">보통</label>',
+                '<input type="radio" name="jobIts', qDataNo, '" id="jobItsN', qDataNo, '" value="no"><label for="jobItsN', qDataNo, '">아니오</label>'
+            ];
+    
+            updateHTML(html.join(''));
+    
+            qIndex++;
+    
+            $(boxClassName).off("change").on("change", 'input[type="radio"]', function() {
+                var radioNo = $(this).attr('name').substr(6);
+    
+                if ($(this).val() == 'yes') {
+                    scoreR += (radioNo % 6 == 1) ? 10 : 5;
+                    scoreI += (radioNo % 6 == 2) ? 10 : 5;
+                    scoreA += (radioNo % 6 == 3) ? 10 : 5;
+                    scoreS += (radioNo % 6 == 4) ? 10 : 5;
+                    scoreE += (radioNo % 6 == 5) ? 10 : 5;
+                    scoreC += (radioNo % 6 == 0) ? 10 : 5;
+                }
+    
+                if (qIndex < data.length) {
+                    showQuestion(qIndex, data);
+                } else {
+                    scoreList = [
+                        {name:"뚝딱이", type:"R", score:scoreR},
+                        {name:"탐험이", type:"I", score:scoreI},
+                        {name:"멋쟁이", type:"A", score:scoreA},
+                        {name:"친절이", type:"S", score:scoreS},
+                        {name:"씩씩이", type:"E", score:scoreE},
+                        {name:"성실이", type:"C", score:scoreC}
+                    ];
+                    
+                    scoreList.sort(function(a, b) {
+                        return a.score - b.score;
+                    });
+
+                    $(boxClassName).hide();
+                    $(boxClassNameRes).show();
+                    
+                    $(boxClassNameRes).append('<div class="p-loading"></div>');
+
+                    var loadingText = ['두', '구', '두', '구', '두', '구', '.', '.', '.', '.', '.', '.', '.', '.'];
+
+                    $('.p-loading').fadeIn(1000).delay(500);
+
+                    // 각 글자를 순차적으로 추가
+                    $.each(loadingText, function(index, text) {
+                        $('.p-loading').delay(index % 2 == 0 ? 100 : 200).queue(function(next) {
+                            $(this).append('<span>' + text + '</span>');
+                            next();
+                        });
+                    });
+
+                    $('.p-loading')
+                        .delay(1500).queue(function(next) {
+                            $(this).append('<p>나는 누구일까요?</p>');
+                            next();
+                        })
+                        .delay(1000).fadeOut(500, function() {
+                            setTimeout(function() {
+                                $('div').remove('.p-loading');
+                                $(boxClassNameRes).css("padding-top", "0.5em");
+                                $(boxClassNameRes).append('<img src="/static/images/img_type' + scoreList[5].type + '.png" />');
+                                $(boxClassNameRes).append('<h5> 나는<span>"' + scoreList[5].name + '"</span>입니다</h5>');
+                            }, 1000);
+                        });
+                }
+            });
+        }
+    
+        $.ajax({
+            type: "get",
+            url: "{% static '/datas/jobInterest.json' %}",
+            dataType: "json",
+            success: function(data) {
+                console.log("통신성공");
+                console.log(data);
+    
+                showQuestion(0, data);
+            },
+            error: function() {
+                console.log("통신에러");
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+
+{% block pageContent %}
+<ul class="jobTypeDesc">
+    <li id="typeDesc">
+        <p class="typeR">
+            <span>뚝딱이는요~</span>
+            손재주가 있거나 만들기를 좋아해요.<br/>
+            만들기에 필요한 도구나 기계를 잘 다뤄요.<br/>
+            그리고 활동적이고 몸을 움직이는 것을 좋아해요.<br/>
+            뚝딱이는 솔직하고 성실하면서도 수줍음이 많은 편이에요.
+        </p>
+        <p class="typeI">
+            <span>탐험이는요~</span>
+            세심히 관찰하거나 합리적이며 정확한 것을 좋아해요.<br/>
+            창의적이고 새로운 일에 도전하는 것도 좋아하죠.<br/>
+            그래서 탐험이는 논리적이며 탐구심, 독립성,<br/>
+            호기심이 많다는 이야기도 자주 들어요.
+        </p>
+        <p class="typeA">
+            <span>멋쟁이는요~</span>
+            감정이 풍부하고 상상력이 좋아서<br/>
+            자신만의 세계로 빠져드는 것을 좋아해요.<br/>
+            또한 옷과 머리를 멋있게 꾸미거나 독특하게 자신을 표현해요.<br/>
+            멋쟁이 중에는 글쓰기, 음악, 미술을 좋아하는 친구들이 많답니다.
+        </p>
+        <p class="typeS">
+            <span>친절이는요~</span>
+            친구와 즐겁고 사이좋게 지내고 함께 활동하는 것을 좋아해요.<br/>
+            어려운 사람을 보면, 무엇을 도와줄까 생각하고<br/>
+            학교나 집에서 봉사하는 것을 잘하죠.<br/>
+            친절이는 이해심이 많고 따뜻한 마음을 가진 사람이에요.
+        </p>
+        <p class="typeE">
+            <span>씩씩이는요~</span>
+            수업 시간에 자신 있게 발표를 잘하고 모든 일을 열심히 해요.<br/>
+            친구들을 설득하고 이끄는 능력이 있어요.<br/>
+            씩씩이는 사람들과 잘 어울리고, 모험심이 강한 사람이에요.
+        </p>
+        <p class="typeC">
+            <span>성실이는요~</span>
+            자신이 계획한 것을 꾸준히 실천하는 것을 좋아하고,<br/>
+            노트에 기록, 정리하는 일을 잘해요.<br/>
+            성실이는 정직하고 계산하는 것을 좋아하고 책임감도 강해서,<br/>
+            친구들과 약속이나 학교 규칙과 질서도 잘 지키는 사람이에요.
+        </p>
+    </li>
+    <li id="typeR" class="active"><strong>뚝딱이</strong><img src="/static/images/img_typeR.png"/></li>
+    <li id="typeI"><strong>탐험이</strong><img src="/static/images/img_typeI.png"/></li>
+    <li id="typeA"><strong>멋쟁이</strong><img src="/static/images/img_typeA.png"/></li>
+    <li id="typeS"><strong>친절이</strong><img src="/static/images/img_typeS.png"/></li>
+    <li id="typeE"><strong>씩씩이</strong><img src="/static/images/img_typeE.png"/></li>
+    <li id="typeC"><strong>성실이</strong><img src="/static/images/img_typeC.png"/></li>
+</ul>
+
+<h1>나는 어떤 사람일까요?</h1>
+
+<div class="jobInterest"></div>
+<div class="jobInterest_result"></div>
+{% endblock %}

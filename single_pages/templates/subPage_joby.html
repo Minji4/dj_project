@@ -1,0 +1,90 @@
+{% extends 'common/htmlTmp_based.html' %}
+
+{% block pageTitle %} 직업영상 보러가기 {% endblock %}
+
+{% block pageStyle %} 
+    <style>
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+
+        .video-wrapper {
+            display: flex;
+            gap: 20px;
+            justify-content: center; 
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction:row;
+            justify-content: center;
+            width: 1290px;
+            {% comment %} height: 30vh; {% endcomment %}
+            margin: 4vh auto;
+            background-color: #fff2bc;
+        }
+
+        .video-wrapper iframe {
+            width: 300px;
+            height: 200px;
+        }
+
+        h2 {
+            width: 1250px;
+            margin: 4vh auto 1vh;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        p {
+            text-align: center; 
+        }
+
+    </style>
+{% endblock %}
+
+{% block header_scripts %}
+    <script>
+        $(document).ready(function() {
+           
+        });
+    </script>
+{% endblock %}
+
+{% block pageContent %}
+    <h1>직업영상</h1>
+
+    <h2>직업체험 vr 360 영상</h2>
+    <div class="video-container">
+        <div class="video-wrapper">
+            <div class="video-box">
+                <!-- 첫 번째 영상 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/NdZ02-Qenso?si=yNK-CN9-IoWEAhM5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>비행기조종사 체험</p>
+            </div>
+
+            <div class="video-box">
+                <!-- 두 번째 영상 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/pxH4_6TWsc4?si=UUlpwIOS4VAgEcKQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>축구선수 체험</p>
+            </div>
+
+            <div class="video-box">
+                <!-- 세 번째 영상 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ny62zkZwszU?si=ppjSNaaTibx2EhRP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>카레이서 체험</p>
+            </div>
+
+            <div class="video-box">
+                <!-- 네 번째 영상 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hEdzv7D4CbQ?si=7icLj2iBlLsYcGhg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>우주비행사 체험</p>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock %}

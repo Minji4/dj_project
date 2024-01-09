@@ -1,0 +1,52 @@
+{% extends 'common/htmlTmp_based.html' %}
+{% load static %}
+
+{% block pageTitle %} 어른들이 하는 일을 알아보아요~ {% endblock %}
+
+{% block header_scripts %}
+<script>
+    $(document).ready(function() {
+        // 이벤트 위임을 사용하여 부모에 이벤트 리스너를 추가
+        $('.jobList').on("click", 'li p', function() {
+            $(this).siblings('dl').slideDown(1000);
+        });
+
+        $('.jobList').on("click", 'li dl', function() {
+            $(this).slideUp(1000);
+        });
+
+        $.ajax({
+            type:"get",
+            url:"{% static '/datas/jobList.json' %}",
+            dataType:"json",
+            success: function(data) {
+                console.log("통신성공");
+                console.log(data);
+
+                $.each(data , function(i){
+                    str = '<li>'; 
+                    str +=  '<img src="/static/images/' + data[i].ImgFile + '" />' +
+                            '<p>' + data[i].JobTitle + '</p>' +
+                            '<dl><dt>' + data[i].JobTitle + '</dt>' +
+                            '<dd>' + data[i].Type01 + ', ' + data[i].Type02 + '</dd>' +
+                            '<dd>' + data[i].Summary + '</dd>' +
+                            '<dd>' + data[i].Description + '</dd></dl>';                                              
+                    str += '</li>';
+                    $('.jobList').append(str);
+                });
+            },
+            error:function() {
+                console.log("통신에러");
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+
+{% block pageContent %}
+<h1>어른들이 하는 일을 알아보아요~</h1>
+<ul class="jobList">
+
+</ul>
+{% endblock %}

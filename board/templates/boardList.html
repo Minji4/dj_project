@@ -1,0 +1,50 @@
+{% extends 'common/htmlTmp_based.html' %}{% load static %}
+
+{% block pageTitle %} 우리의 궁금증을 모아봤어요~ {% endblock %}
+
+{% block pageStyle %} 
+table {width:80%; margin:auto; border-collapse:collapse;}
+th, td {font-size:1em; color:#7c4c0e; text-align:center; padding:0.5em; border-bottom:1px dotted #7c4c0e;}
+th {background:#ffb900; border-bottom:1px solid #7c4c0e; border-top:2px solid #7c4c0e;}
+
+tr:nth-of-type(2n+1) {background:#fff2bc;}
+tr:nth-of-type(2n) {background:#fae793;}
+tr:last-of-type {border-bottom:2px solid #7c4c0e;}
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    $(document).ready(function() {
+
+    });
+</script>        
+{% endblock %}
+
+
+{% block pageContent %}
+<h1>우리의 궁금증을 모아봤어요~</h1>
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성일자</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in posts %}
+        <tr>
+            <td>{{ p.pk }}</td>
+            <td><a href="{{ p.get_absolute_url }}"> {{ p.title }}</a></td>      {% comment %} get_absolute_url() 메소드를 통해 해당 포스트의 URL을 반환 {% endcomment%}
+            <td>{{ p.content }}</td>                                            {% comment %} # created_at 필드 값을 출력 {% endcomment%}
+            <td>{{ p.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+
+

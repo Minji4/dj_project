@@ -1,22 +1,30 @@
-{% extends 'common/htmlTmp_based.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[직업의 세계] {% block pageTitle %} {% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static 'css/default.css' %}" media="screen" />
+    <style>{% block pageStyle %} {% endblock %}</style>
 
-{% block pageTitle %} 직업체험 하러가기 {% endblock %}
-
-{% block pageStyle %} 
-    <style>
-       
-    </style>
-{% endblock %}
-
-{% block header_scripts %}
-    <script>
-        $(document).ready(function() {
-           
-        });
-    </script>
-{% endblock %}
-
-{% block pageContent %}
-    <h1>직업체험</h1>
-
-{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    {% block header_scripts %} {% endblock %}
+    <script src="{% static 'scripts/subPage.js' %}"></script>
+</head>
+<body>
+<div class="pageLayer">
+    <ul class="nav">
+        <li><a href="/" class="logo">Home</a></li>
+        <li class="menu"><a href="/jobList">어른들이 하는 일 <span>(직업 종류)</span></a></li>
+        <li class="menu"><a href="/jobInterest">나는 누구? <span>(직업 적성 찾기)</span></a></li>
+        <li class="menu"><a href="/blog/">나도 해보기 <span>(직업 체험하기)</span></a></li>
+        <li class="menu"><a href="/futureJob">미래직업 연구</a></li>
+        <li class="menu"><a href="/board/">궁금증 해결하기<span>(게시판)</span></a></li>
+    </ul>
+    
+    {% block pageContent %} {% endblock %}
+</div>
+</body>
+</html>

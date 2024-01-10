@@ -33,7 +33,7 @@
 - 초등학생을 위한 것으로 이미지 70개 사용
 - 동적 효과 적용
 - 간단한 설명
-- 
+
 -어른들이 하는일 부분-
 ![image](https://github.com/Minji4/dj_project/assets/102903527/be5e4f31-96b3-44ef-90f1-d27f58f64d1e)
 

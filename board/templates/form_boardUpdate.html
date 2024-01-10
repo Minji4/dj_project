@@ -1,0 +1,41 @@
+{% extends 'common/htmlTmp_based.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block pageTitle %}게시글 수정!! {% endblock %}
+
+
+{% block pageStyle %} 
+form {width:80%; margin:auto; padding:0 0 1em; overflow:hidden;}
+
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+    $(document).ready(function() {
+
+    });
+</script>        
+{% endblock %}
+
+
+{% block pageContent %}
+    <h1>게시글 수정하기</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% load crispy_forms_tags %}{% csrf_token %}
+        {{ form | crispy }}          <!--    외부 라이브러리인 crispy를 적용하고 싶은 폼에는 변수 해당 변수명 사용시 '| crispy' 붙이기    -->
+
+        <div id="div_id_tags_str">
+            <label for="id_tags_str">Tags:</label>
+            <input type="text" name="tags_str" id="id_tags_str" class="textinput textInput form-control" />
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-primary float-right">Submit</button>
+    </form>
+    {{ form.media }} <!-- crispy form에서 사용하는 media를 사용하기 위해 추가. 해당 폼에 필요한 css, js 파일을 불러옴.      -->
+{% endblock %}
+

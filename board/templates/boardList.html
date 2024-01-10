@@ -3,13 +3,34 @@
 {% block pageTitle %} 우리의 궁금증을 모아봤어요~ {% endblock %}
 
 {% block pageStyle %} 
-table {width:80%; margin:auto; border-collapse:collapse;}
+.contHeader {display:flex;}
+
+.searchBox  {
+    width:50%; display:flex; float:left;
+    margin:0 0 1em 20%;
+}
+.searchBox input    {border:1px solid #cacaca;}
+.searchBox .icon    {
+    display:inline-block; margin:1px 0 0 5px;
+    width:36px; height:36px; cursor:pointer;
+}
+
+.btn    {
+    float:right; margin:0.5em 11% 1em; padding:0.3em 1em; color:#7c4c0e;
+    font-size:0.9em;
+    background:#ffb900; border-radius:1em; border-bottom:1px dotted #7c4c0e; 
+}
+
+table {width:80%; margin:auto; border-collapse:collapse; clear:both;}
 th, td {font-size:1em; color:#7c4c0e; text-align:center; padding:0.5em; border-bottom:1px dotted #7c4c0e;}
 th {background:#ffb900; border-bottom:1px solid #7c4c0e; border-top:2px solid #7c4c0e;}
 
 tr:nth-of-type(2n+1) {background:#fff2bc;}
 tr:nth-of-type(2n) {background:#fae793;}
 tr:last-of-type {border-bottom:2px solid #7c4c0e;}
+
+
+td a {display:inline-block; padding:0 0.3em; border-bottom:1px dotted #7c4c0e;}
 {% endblock %}
 
 {% block pageScripts %}
@@ -17,34 +38,92 @@ tr:last-of-type {border-bottom:2px solid #7c4c0e;}
     $(document).ready(function() {
 
     });
-</script>        
+    
+</script>
 {% endblock %}
 
 
 {% block pageContent %}
 <h1>우리의 궁금증을 모아봤어요~</h1>
+
+<div class="contHeader">
+    <!-- 검색 부분 -->
+    <div class="searchBox">
+        <!--    select name="searchIdx">
+            <option value="all">전체</option>
+            <option value="category">카테고리</option>
+            <option value="title">제목</option>
+            <option value="author">작성자</option>
+        </select    -->
+        <input type="text" class="form-control" placeholder="Search for..." id="search-input" />
+        <img src="/static/images/icon_search.png" onclick="searchPost();" class="icon" />
+    </div>
+    
+    <!-- 글쓰기 버튼 부분 -->
+    {% if user.is_authenticated %}
+        {% comment %} {% if user.is_superuser or user.is_staff %} {% endcomment %}
+            <a class="btn" href="/board/create_post/" role="button">글쓰기</a>
+        {% comment %} {% endif %} {% endcomment %}
+    {% endif %}
+</div>
+
+
 <table>
     <thead>
         <tr>
             <th>No</th>
+            <th>카테고리</th>
             <th>제목</th>
-            <th>내용</th>
+            <th>요약</th>
+            <th>작성자</th>
             <th>작성일자</th>
         </tr>
     </thead>
     <tbody>
-        {% for p in posts %}
+        {% for p in post_list %}
         <tr>
             <td>{{ p.pk }}</td>
+            <td>{{ p.category }}</td>
             <td><a href="{{ p.get_absolute_url }}"> {{ p.title }}</a></td>      {% comment %} get_absolute_url() 메소드를 통해 해당 포스트의 URL을 반환 {% endcomment%}
-            <td>{{ p.content }}</td>                                            {% comment %} # created_at 필드 값을 출력 {% endcomment%}
+            <td>{{ p.hook_text }}</td>                                          {% comment %} # created_at 필드 값을 출력 {% endcomment%}
+            <td>{{ p.author }}</td>
             <td>{{ p.created_at }}</td>
         </tr>
         {% endfor %}
     </tbody>
-</table>
+</table><br/><br/>
 
+{% if is_paginated %}   {% comment %} 페이징 처리가 되는 경우... {% endcomment%}
+<!--    Pagination     -->
+<ul class="pagination justify-content-center mb-4">
+    {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Prev</a></li>
+    {% else %}
+        <li class="page-item disabled"><a class="page-link" href="#">&larr; Prev</a></li>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next &rarr;</a></li>
+    {% else %}
+        <li class="page-item disabled"><a class="page-link" href="#">Next &rarr;</a></li>
+    {% endif %}
+{% endif %}
+
+<script>
+    function searchPost() {                                     // 입력된 검색어를 확인하여 검색결과 페이지로 이동하는 함수
+        let searchValue = document.getElementById('search-input').value.trim();
+
+        if(searchValue.length > 1) {
+            location.href = "/board/search/" + searchValue + "/";            // urls.py에 설정되어 있는 path
+        } else {
+            alert('검색어(' + searchValue + ')가 너무 짧습니다.');
+        }
+    };
+
+    document.getElementById('search-input').addEventListener('keyup', function (event) {
+        if(event.key === 'Enter') {                             // 검색어 입력창에서 'Enter'키를 쳤을 때도 searchPost() 함수 호출
+            searchPost();
+        }
+    });
+</script>
 {% endblock %}
-
-
-

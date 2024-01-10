@@ -23,5 +23,7 @@
   - McKinsey Global Institute (2023)
   - 한국고용정보원 (2020)
 
+## 웹 페이지 구성
+![image](https://github.com/Minji4/dj_project/assets/102903527/7b9fe6b9-2841-4e9f-a819-6fa2d473b591)
 
 

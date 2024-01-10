@@ -1,4 +1,5 @@
 ## 웹프로젝트 : 직업의 세계
+![image](https://github.com/Minji4/dj_project/assets/102903527/440a6028-42d3-4f78-8fb7-47869644c313)
 
 ## 계획의도
 - 다양한 직업에 대한 정보 부족

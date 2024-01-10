@@ -33,7 +33,8 @@
 - 초등학생을 위한 것으로 이미지 70개 사용
 - 동적 효과 적용
 - 간단한 설명
-
+- 
+-어른들이 하는일 부분-
 ![image](https://github.com/Minji4/dj_project/assets/102903527/be5e4f31-96b3-44ef-90f1-d27f58f64d1e)
 
 -나는 누구일까 부분-
@@ -42,3 +43,8 @@
 -나도 해보기 부분-
 ![image](https://github.com/Minji4/dj_project/assets/102903527/fc711733-d8d2-49a4-8672-2263c36c74f6)
 
+-미래 직업 연구 부분-
+![image](https://github.com/Minji4/dj_project/assets/102903527/1e1d9229-303b-45bc-8fde-0d2099fd0a64)
+
+-궁금증 해결하기 부분-
+![image](https://github.com/Minji4/dj_project/assets/102903527/7c05e086-224a-4a3e-93c8-a7ce733a176d)

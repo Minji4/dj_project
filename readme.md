@@ -26,4 +26,19 @@
 ## 웹 페이지 구성
 ![image](https://github.com/Minji4/dj_project/assets/102903527/7b9fe6b9-2841-4e9f-a819-6fa2d473b591)
 
+## 스킬
+- Django / Python
+- Single pages
+  - HTML / CSS / JS / Aja
+- 초등학생을 위한 것으로 이미지 70개 사용
+- 동적 효과 적용
+- 간단한 설명
+
+![image](https://github.com/Minji4/dj_project/assets/102903527/be5e4f31-96b3-44ef-90f1-d27f58f64d1e)
+
+-나는 누구일까 부분-
+![image](https://github.com/Minji4/dj_project/assets/102903527/f0558d9d-6f94-4c7d-bfdd-12498eefc4c9)
+
+-나도 해보기 부분-
+![image](https://github.com/Minji4/dj_project/assets/102903527/fc711733-d8d2-49a4-8672-2263c36c74f6)
 
